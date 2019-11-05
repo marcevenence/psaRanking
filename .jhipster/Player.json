@@ -1,0 +1,41 @@
+{
+    "name": "Player",
+    "fields": [
+        {
+            "fieldName": "profile",
+            "fieldType": "ProfileUser",
+            "fieldValues": "PLAYER,STAFF"
+        },
+        {
+            "fieldName": "captainFlag",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "person",
+            "otherEntityRelationshipName": "player",
+            "relationshipName": "person",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "roster",
+            "otherEntityRelationshipName": "player",
+            "relationshipName": "roster",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191105114553",
+    "entityTableName": "player",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

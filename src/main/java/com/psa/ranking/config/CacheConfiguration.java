@@ -42,6 +42,27 @@ public class CacheConfiguration {
             createCache(cm, com.psa.ranking.domain.User.class.getName());
             createCache(cm, com.psa.ranking.domain.Authority.class.getName());
             createCache(cm, com.psa.ranking.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.psa.ranking.domain.Country.class.getName());
+            createCache(cm, com.psa.ranking.domain.Country.class.getName() + ".provinces");
+            createCache(cm, com.psa.ranking.domain.Province.class.getName());
+            createCache(cm, com.psa.ranking.domain.Province.class.getName() + ".locations");
+            createCache(cm, com.psa.ranking.domain.Location.class.getName());
+            createCache(cm, com.psa.ranking.domain.Location.class.getName() + ".cities");
+            createCache(cm, com.psa.ranking.domain.City.class.getName());
+            createCache(cm, com.psa.ranking.domain.Address.class.getName());
+            createCache(cm, com.psa.ranking.domain.DocType.class.getName());
+            createCache(cm, com.psa.ranking.domain.Person.class.getName());
+            createCache(cm, com.psa.ranking.domain.Tournament.class.getName());
+            createCache(cm, com.psa.ranking.domain.Tournament.class.getName() + ".events");
+            createCache(cm, com.psa.ranking.domain.Event.class.getName());
+            createCache(cm, com.psa.ranking.domain.Event.class.getName() + ".categories");
+            createCache(cm, com.psa.ranking.domain.Team.class.getName());
+            createCache(cm, com.psa.ranking.domain.Category.class.getName());
+            createCache(cm, com.psa.ranking.domain.Category.class.getName() + ".events");
+            createCache(cm, com.psa.ranking.domain.Roster.class.getName());
+            createCache(cm, com.psa.ranking.domain.Roster.class.getName() + ".players");
+            createCache(cm, com.psa.ranking.domain.Player.class.getName());
+            createCache(cm, com.psa.ranking.domain.Player.class.getName() + ".rosters");
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,186 @@
+/**
+ * Country entity.
+ * @author Marcelo Miño
+ */
+entity Country {
+	name String
+}
+
+/**
+ * Province entity.
+ * @author Marcelo Miño
+ * Datos traidos desde https://infra.datos.gob.ar/catalog/modernizacion/dataset/7/distribution/7.2/download/provincias.json
+ */
+ entity Province {
+ 	name String
+ }
+ 
+
+/**
+ * Location entity.
+ * @author Marcelo Miño
+ * Datos traidos desde https://infra.datos.gob.ar/catalog/modernizacion/dataset/7/distribution/7.4/download/municipios.json
+ */
+entity Location {
+    name String
+}
+
+/**
+ * City entity.
+ * @author Marcelo Miño
+ * Datos traidos desde https://infra.datos.gob.ar/catalog/modernizacion/dataset/7/distribution/7.5/download/localidades.json
+ */
+ entity City {
+ 	name String,
+    latitude String,
+    longitude String    
+ }
+
+/**
+ * Address entity.
+ * @author The JHipster team.
+ */
+entity Address {
+	street String,
+	zipCode String,
+}
+
+
+/**
+ * Address entity.
+ * @author The JHipster team.
+ */
+ entity DocType {
+ 	name String,
+    description String
+ }
+/**
+ * Person entity.
+ * @author Marcelo Miño
+ */
+entity Person {
+	names String,
+	surnames String,
+	email String,
+	phone String,
+    bornDate Instant,
+    psaId String,
+    eraseDate Instant,
+    active Boolean,
+    createDate Instant,
+    updatedDate Instant
+}
+
+/**
+ * Tournament entity.
+ * @author Marcelo Miño
+ */
+ entity Tournament {
+ 	name String,
+    closeInscrDays Integer,
+    status Status,
+    createDate Instant,
+    updatedDate Instant
+ }
+
+/**
+ * Event entity.
+ * @author Marcelo Miño
+ */
+ entity Event {
+ 	name       String,
+	fromDate   LocalDate,
+    endDate    LocalDate,
+    endInscriptionDate LocalDate,
+    status     Status,
+    createDate Instant,
+    updatedDate Instant
+ }
+
+/**
+ * Team entity.
+ * @author Marcelo Miño
+ */
+ entity Team {
+    name String,
+    active Boolean,
+    createDate Instant,
+    updatedDate Instant
+ }
+
+entity Category {
+    name String,
+    description String
+}
+/**
+ * Roster entity.
+ * @author Marcelo Miño
+ */
+ entity Roster {
+    active Boolean,
+    profile ProfileUser,
+    createDate Instant,
+    updatedDate Instant
+ }
+
+ entity Player {
+   profile ProfileUser,
+   captainFlag Boolean
+ }
+// ENUMS
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+enum ProfileAdmin {
+    ORGANIZER, TABLE_ASSISTANT, CREDITOR
+}
+
+enum ProfileUser {
+    PLAYER, STAFF
+}
+
+enum Status {
+	CREATED, IN_PROGRESS, DONE
+}
+
+// RELACIONES
+relationship OneToMany {
+	Country {province} to Province,
+    Province {location} to Location,
+    Location {city} to City,
+	Tournament {event} to Event
+}
+
+relationship ManyToOne {
+	Person {docType} to DocType,
+    Tournament {owner} to Person,
+    Team {owner} to Person,
+    Address {city} to City,
+    Roster {category} to Category,
+    Player {person} to Person
+}
+
+relationship OneToOne {
+	Person {address} to Address,
+    Tournament {address} to Address    
+}
+
+relationship ManyToMany {
+	Roster {player} to Player {roster},
+    Event {category} to Category {event}
+}
+
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate all with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+// service all with serviceImpl except DocType
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
