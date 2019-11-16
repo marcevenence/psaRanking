@@ -7,6 +7,19 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "country": "Country",
+        "province": "Province",
+        "location": "Location",
+        "city": "City",
+        "address": "Address",
+        "docType": "Doc Type",
+        "person": "Person",
+        "tournament": "Tournament",
+        "event": "Event",
+        "team": "Team",
+        "category": "Category",
+        "roster": "Roster",
+        "player": "Player",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
